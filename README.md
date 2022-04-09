@@ -17,5 +17,8 @@ guest users to search property base on the property features.
 1. Implement Pagination in Homepage and Other List Views
 2. Implement Searching mechanisms with Django-Filter
 3. Activate other Property Options as only Houses are presently Available.
-
+4. Refactor Code
+5. Fix Bugs
+6. Implement Contact me Feature
+7. Activate Email Authentication
 
