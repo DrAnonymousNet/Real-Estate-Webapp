@@ -21,4 +21,6 @@ guest users to search property base on the property features.
 5. Fix Bugs
 6. Implement Contact me Feature
 7. Activate Email Authentication
+8. Write Test Cases
+9. Document Code
 
