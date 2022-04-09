@@ -7,15 +7,15 @@ to create property that is available for sale, rent or lease and allows
 guest users to search property base on the property features.
 
 # Features
-— Create, Edit and Delete Property.
-— Custom defined Authentication System ( Login, Logout and Register).
-— Listing of Featured and Latest Properties.
-— Searching of Property.
+1. Create, Edit and Delete Property.
+2. Custom defined Authentication System ( Login, Logout and Register).
+3. Listing of Featured and Latest Properties.
+4. Searching of Property.
 
 
 # TO DO
-— Activate Pagination
-— Activate Searching
-— Activate other Property Options as only Houses are presently Available.
+1. Activate Pagination
+2. Activate Searching
+3. Activate other Property Options as only Houses are presently Available.
 
 
