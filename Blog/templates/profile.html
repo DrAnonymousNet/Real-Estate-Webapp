@@ -1,0 +1,47 @@
+{% extends "base.html"%}
+{% load crispy_forms_tags%}
+    {% block content%}
+
+<style>
+   .account-img {
+ height: 125px; width: 125px; margin-right: 20px; margin-bottom: 16px;}
+ .account-heading {
+ font-size: 2.5rem;
+}
+
+</style>
+
+<div class="col-4 offset-4 mb-6 mt-5">
+        <div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img"   src="{{ request.user.agent.profile_picture.url }}">
+        <div class="media-body">
+            <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">{{request.user.agent.get_full_name}}</h1>
+              <span class="color-text-a">{{request.user.email}}</span>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Join Today</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline.info btn-primary" type="submit">Save</button>
+
+                </div>
+            </form>
+        </div>
+</div>
+{%endblock content%}
