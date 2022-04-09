@@ -1,8 +1,21 @@
 # Real-Estate-Webapp
 A code base for a Django webapp i created with a ready made template from Bostrapmade.
 
-The webapp allows register users to list property either for sale, rent or lease, 
-with options to edit already created 
+# About
+It's a Real Estate Webapp that allows agents
+to create property that is available for sale, rent or lease and allows 
+guest users to search property base on the property features.
 
-The app has a custom self defined authentication system (Login, Logout, Register)
+# Features
+— Create, Edit and Delete Property.
+— Custom defined Authentication System ( Login, Logout and Register).
+— Listing of Featured and Latest Properties.
+— Searching of Property.
+
+
+# TO DO
+— Activate Pagination
+— Activate Searching
+— Activate other Property Options as only Houses are presently Available.
+
 
