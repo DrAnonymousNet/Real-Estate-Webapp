@@ -12,14 +12,19 @@ def Home(request):
     featured_house = House.objects.filter(featured=True)
     featured_agent = Agent.objects.filter(featured=True)
     latest_property = House.objects.filter(date_listed__isnull=False)[:20]
-    print(featured_house.count())
-    house_filter = HouseFilter()
+    if request.method == "POST":
+        filtered = HouseFilter(request.GET, queryset=House.objects.all())
+        context = {
+            "filter": filtered
+        }
+
+        return render(request, "search_result.html", context=context)
 
     context = {
         "featured_house": featured_house,
         "featured_agent": featured_agent,
         "latest_house": latest_property,
-        "house_filter": house_filter
+
 
     }
     return render(request, "index.html", context)
@@ -57,7 +62,8 @@ def agent_property_list(request, id):
 
     context = {
         "agent": agent,
-        "agent_properties": properties
+        "agent_properties": properties,
+        "id":id
     }
     return render(request, "agent_property_list.html", context)
 
@@ -142,3 +148,11 @@ def property_delete(request, id):
         "property":property
     }
     return render(request, "property_confirm_delete.html", context=context)
+
+def search_view(request):
+    filtered = HouseFilter(request.GET, queryset=House.objects.all())
+    context = {
+        "filter":filtered
+    }
+
+    return render(request, "search_result.html", context=context)

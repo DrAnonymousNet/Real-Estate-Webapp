@@ -1,5 +1,6 @@
 {% extends "base.html"%}
 {% load static%}
+{%load phonize_filter%}
 
 {%block content%}
     <!-- ======= Intro Single ======= -->
@@ -10,6 +11,13 @@
             <div class="title-single-box">
               <h1 class="title-single">{{ agent.get_fullname}}</h1>
               <span class="color-text-a">Agent Immobiliari</span>
+
+              {% if request.user.id == id %}
+
+              <div class="container">
+                    <a class="btn btn-outline.secondary" href="{% url 'property_create' %}">Create</a>
+              </div>
+              {% endif %}
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -39,7 +47,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="agent-avatar-box">
-                  <img src="{% static 'img/agent-7.jpg' %}" alt="" class="agent-avatar img-fluid">
+                  <img src="{{agent.profile_picture.url}}" alt="" class="agent-avatar img-fluid">
                 </div>
               </div>
               <div class="col-md-5 section-md-t3">
@@ -59,11 +67,11 @@
                     <div class="info-agents color-a">
                       <p>
                         <strong>Phone: </strong>
-                        <span class="color-text-a"> {{ agent.phone_number}}</span>
+                        <span class="color-text-a"> {{ agent.phone_number | phonize}}</span>
                       </p>
                       <p>
                         <strong>Mobile: </strong>
-                        <span class="color-text-a">{{ agent.phone_number}}</span>
+                        <span class="color-text-a">{{ agent.phone_number | phonize}}</span>
                       </p>
                       <p>
                         <strong>Email: </strong>
@@ -126,7 +134,7 @@
             <div class="col-md-4">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
-                  <img src="{% static 'img/property-3.jpg' %}" alt="" class="img-a img-fluid">
+                  <img src="{{property.image.url}}" alt="" class="img-a img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-overlay-a-content">
