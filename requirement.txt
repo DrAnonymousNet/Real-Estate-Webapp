@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 asgiref==3.5.0
 backports.zoneinfo==0.2.1
 Django==4.0.3
@@ -5,3 +6,12 @@ django-crispy-forms==1.14.0
 django-filter==21.1
 Pillow==9.0.1
 sqlparse==0.4.2
+=======
+asgiref==3.5.0
+backports.zoneinfo==0.2.1
+Django==4.0.3
+django-crispy-forms==1.14.0
+django-filter==21.1
+Pillow==9.0.1
+sqlparse==0.4.2
+>>>>>>> 98f16fcc49fa0f134ba5addb6b5fd8649ce7fd20
