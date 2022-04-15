@@ -1,5 +1,5 @@
 # Real-Estate-Webapp
-A code base for a Django webapp i created with a ready made template from Bostrapmade.
+A Repository for a Django webapp i created with a ready made template from Bostrapmade.
 
 # Link
 
