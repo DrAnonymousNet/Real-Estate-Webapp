@@ -5,12 +5,16 @@ from .models import  *
 
 
 class HouseFilter(django_filters.FilterSet):
-    property_name = CharFilter(field_name="property_name", lookup_expr="icontain")
-    min_price = NumberFilter(field_name= "price", lookup_expr="gte")
-    end_price = NumberFilter(field_name="price", lookup_expr="lte")
+    #area = CharFilter(field_name="property_name", lookup_expr="icontains", label="Area")
+    property_name = CharFilter(field_name="property_name", lookup_expr="icontains", label="Property Name")
+    min_price = NumberFilter(field_name= "price", lookup_expr="gte", label="min price")
+    end_price = NumberFilter(field_name="price", lookup_expr="lte" ,label="max price")
 
 
     class Meta:
         model = House
-        fields = ["area", "status", "no_of_bedroom", "price", "property_name"]
+        fields = {"area":[ "iexact"],
+                  "status":["exact"],
+                  "no_of_bedroom":["exact"],
+                  "price":["lte", "gte"]} #"property_name":["icontains", "iexact"]}
         exclude = ["price", "property_name"]

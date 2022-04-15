@@ -12,12 +12,15 @@ class Agent(models.Model):
     about = models.TextField(max_length=160)
     address = models.TextField(max_length=50)
     featured = models.BooleanField(blank=True, null=True)
-    phone_number = models.IntegerField(blank= True, verbose_name='Phone Number', null=True)
+    phone_number = models.CharField(blank= True, verbose_name='Phone Number', null=True, max_length=16)
     profile_picture = models.ImageField(upload_to="profile_picture", blank=True, null=True, default="default.jpg")
 
     def get_fullname(self):
         fullname = str(self.user.first_name) +" "+ str(self.user.last_name)
         return fullname
+
+    def get_whatsapp_link(self):
+        return "https://wa.me/"+str(self.phone_number)
 
     def __str__(self):
         return f'{self.user}'
@@ -26,12 +29,6 @@ class Agent(models.Model):
         return reverse("agent_property_list", kwargs={"id":self.id})
 
 
-
-class Images(models.Model):
-    picture = models.ImageField(upload_to='house_image', verbose_name='Picture', blank=False)
-
-    def __str__(self):
-        return self.picture.name
 
 class Amenity(models.Model):
     name = models.CharField(verbose_name='Amenity', max_length=50)
@@ -56,14 +53,15 @@ class Property(models.Model):
     date_listed = models.DateField(auto_now_add=True, blank=True)
     state = models.CharField(max_length=20, blank=True,default="Kwara")
     city = models.CharField(max_length=20, blank=True, default= "Ilorin")
-    area = models.CharField(max_length=50, blank=True, default="Tanke")
-    address = models.CharField(max_length=50, blank=True, default="36, MFM Junction")
+    area = models.CharField(max_length=50, blank=True, default="MFM")
+    address = models.CharField(max_length=50, blank=True, default="")
     status = models.CharField(choices=OPTIONS, max_length=10)
     featured = models.BooleanField(default=False)
     slug = models.SlugField(blank=True, editable=False)
-    image = models.ManyToManyField(Images)
+    #image = models.ForeignKey(Images, on_delete=models.CASCADE)
     amenity = models.ManyToManyField(Amenity)
     no_of_plots = models.IntegerField(verbose_name="Plots", blank=True, default=2)
+
 
     class Meta:
         abstract = True
@@ -85,6 +83,7 @@ class House(Property):
     no_of_bedroom = models.PositiveIntegerField(verbose_name="Bed")
     no_of_bathroom = models.PositiveIntegerField(verbose_name="Bathroom", default=1, blank=True)
 
+
     def get_absolute_url(self):
         return reverse("property_detail", kwargs={"id": self.id})
 
@@ -97,5 +96,10 @@ class House(Property):
         return self.property_name
 
 
+class Images(models.Model):
+    picture = models.ImageField(upload_to='house_image', verbose_name='Picture', blank=False)
+    house = models.ForeignKey(House, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.picture.name
 

@@ -13,7 +13,7 @@ class HouseForm(forms.ModelForm):
 class LandForm(forms.ModelForm):
     class Meta:
         model = Land
-        fields = ["property_name", "price", "status", "address", "image", "no_of_plots"]
+        fields = ["property_name", "price", "status", "address", "no_of_plots"]
 
 
 class ImageForm(forms.ModelForm):
@@ -43,7 +43,12 @@ class AgentForm(forms.ModelForm):
             raise forms.ValidationError("Incomplete Number")
         return super(AgentForm, self).clean(*args, **kwargs)
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=20)
+    message = forms.CharField(max_length=160)
 
-Image_formset = modelformset_factory(Images, ImageForm, extra=3, max_num=  3, can_delete=True)
-#Image_formse = inlineformset_factory(House, Images, fields= ["image"])
+
+
+#Image_formset = modelformset_factory(Images, ImageForm, extra=3, max_num=  3, can_delete=True)
+Image_formset = inlineformset_factory(House, Images, form = ImageForm, fields= ["picture"], extra=3, max_num=3)
 Amenity_formset = modelformset_factory(Amenity, AmenityForm, extra=3, can_delete=True, max_num=3)

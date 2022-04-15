@@ -49,7 +49,7 @@
           <div class="col-lg-8">
             <div id="property-single-carousel" class="swiper">
               <div class="swiper-wrapper">
-                {% for im in property.image.all%}
+                {% for im in property.images_set.all%}
 
                 <div class="carousel-item-b swiper-slide">
                   {% if im.picture %}
@@ -199,8 +199,8 @@
                       <span class="color-text-a">{{agent.user.email}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
-                      <strong>Skype:</strong>
-                      <span class="color-text-a">Annabela.ge</span>
+                      <strong>Whatsapp:</strong>
+                      <a href="{{agent.get_whatsapp_link}}"><span class="color-text-a">Message Me</span></a>
                     </li>
                   </ul>
                   <div class="socials-a">

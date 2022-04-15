@@ -1,3 +1,5 @@
+{% load crispy_forms_tags%}
+
   <!-- ======= Property Search Section ======= -->
   <div class="click-closed"></div>
   <!--/ Form Search Star /-->
@@ -7,20 +9,21 @@
     </div>
     <span class="close-box-collapse right-boxed bi bi-x"></span>
     <div class="box-collapse-wrap form">
-      <form class="form-a" method="get">
+      <form class="form-a" method="get" action="{% url 'search' %}">
         <div class="row">
-          {% for form in house_filter.form%}
+
 
           <div class="col-md-6 mb-2">
             <div class="form-group mt-3">
               <label class="pb-1" >{{form.label}}</label>
-          {{form}}
+          {{filtered.form | crispy}}
             </div>
           </div>
-          {%endfor%}
+
           <div class="col-md-12">
             <button type="submit" class="btn btn-b">Search Property</button>
           </div>
+
         </div>
       </form>
     </div>
@@ -51,6 +54,11 @@
             <a class="nav-link " href="{% url 'property_list'%}">Property</a>
           </li>
 
+          {% if request.user.is_authenticated%}
+          <li class="nav-item">
+          <a class="nav-link " href="{% url 'property_create'%}">Create Property</a>
+          </li>
+          {% endif %}
 
 
           <li class="nav-item dropdown">
@@ -61,7 +69,7 @@
               {%endif%}
               {% if request.user.is_authenticated%}
               <a class="dropdown-item " href="{% url 'profile'%}">Profile</a>
-              <a class="dropdown-item " href="{% url 'property_create'%}">Create Property</a>
+              <a class="dropdown-item " href="{% url 'agent_property_list' request.user.id%}">My Properties</a>
               <a class="dropdown-item " href="{% url 'logout'%}">Logout</a>
               {% else %}
               <a class="dropdown-item " href="{%url 'login'%}">Login</a>
@@ -72,7 +80,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#">Contact</a>
+            <a class="nav-link " href="https://wa.me/+234806007606">Contact</a>
           </li>
         </ul>
       </div>

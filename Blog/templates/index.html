@@ -13,7 +13,7 @@
 
     <div class="swiper-wrapper">
     {% for house in featured_house%}
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{house.image.first.picture.url}})">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{house.images_set.first.picture.url}})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -166,7 +166,7 @@
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
-                  <img src="{{latest.image.first.picture.url}}" alt="" class="img-a img-fluid">
+                  <img src="{{latest.images_set.first.picture.url}}" alt="" class="img-a img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-overlay-a-content">
