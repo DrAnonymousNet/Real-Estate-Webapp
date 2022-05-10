@@ -25,7 +25,6 @@ guest users to search property base on the property features.
 1. Activate other Property Options as only Houses are presently Available.
 2. Refactor Code
 3. Fix Bugs
-4. Activate Email Authentication
-5. Write Test Cases
-6. Document Code
+4. Write Test Cases
+5. Document Code
 
